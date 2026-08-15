@@ -61,6 +61,16 @@ Then reload plugins in the Hermes desktop app (Ctrl+K → "Reload desktop plugin
 - Hermes desktop app with the plugin SDK (any recent build)
 - The `profiles.*` / `image.generate` gateway RPCs ship in hermes-agent ≥ mid-2026 builds (`hermes update`). The plugin feature-detects older gateways and degrades gracefully — the roster works everywhere; Advanced editing and avatar generation light up when the RPCs exist.
 
+### Multi-source rosters (Aug 2026 Desktop builds)
+
+On a Desktop build with the multi-connection registry (Settings → Connections), the Bots pane shows agents from **every registered source** — this device, remote gateways, Hermes Cloud instances — side by side:
+
+- Bots living on another source carry a small **device badge** (the connection's name) on their roster row, and their @handle disambiguates as `@name-device` (e.g. `@research-homelab`) when the same profile name exists on several sources.
+- Clicking a remote-source bot activates its own gateway first, then lands in that bot's canonical chat on **its** machine — same one-forever-chat behavior, per source.
+- Searching matches the device name too: typing `homelab` narrows to every bot on that connection.
+
+Feature-detected end to end: on an older Desktop build the pane simply shows the active gateway's profiles exactly as before.
+
 ## Notes
 
 - Bot-to-bot delivery is per-invocation (the receiving bot sees the message in its inbox when it next runs); live interrupt of a mid-conversation bot is upstream future work.
